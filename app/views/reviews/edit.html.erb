@@ -1,0 +1,28 @@
+
+<h1>レビューの編集</h1>
+
+<%= form_with( url: review_path(@lecture, @review), method: :patch, local: true) do |f| %>
+  <div class="form-group">
+    <%= f.label :タイトル %>
+    <%= f.text_field :title , class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :内容 %>
+    <%= f.text_area :body, value: "授業の難易度:\n\n\n出席について:\n\n\nテスト、最終レポートについて:\n\n\n過去問について:\n\n\nその他:", class: "form-control" ,rows: 15 %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :星 %>
+    <%= f.number_field :star, in: 1..5  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'レビューを更新する', class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<!-- Bootstrap JavaScriptを読み込む -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

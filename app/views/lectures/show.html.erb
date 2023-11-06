@@ -1,0 +1,40 @@
+<body>
+  <div class="container">
+    <h1 class="mt-4"><%= @lecture.title %></h1>
+
+    <div class="card mt-4">
+      <div class="card-body">
+        <h2 class="card-title">授業情報</h2>
+        <p class="card-text">講師: <%= @lecture.teacher %></p>
+        <p class="card-text">授業名: <%= @lecture.title %></p>
+        <p class="card-text">曜日: <%= @lecture.day%></p>
+        <p class="card-text">コマ: <%= @lecture.time %></p>
+        <p class="card-text">学部: <%= @lecture.faculty %></p>
+        <p class="card-text">学科: <%= @lecture.course %></p>
+        <p class="card-text">教室 <%= @lecture.where %></p>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <%= link_to 'レビューを見る', reviews_path(@lecture), class: 'btn btn-primary' %>
+    </div>
+
+    <div class="mt-4">
+      <%= link_to '一覧に戻る', lectures_path, class: 'btn btn-secondary' %>
+    </div>
+
+    <div class="mt-4">
+      <%= link_to '編集', edit_lecture_path, class: 'btn btn-secondary' %>
+    </div>
+    <% if @lecture.user_id == current_user.id %>
+      <div class="mt-4">
+        <%= button_to '削除', lecture_path, method: :delete, class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Bootstrap JavaScriptを読み込む -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>

@@ -1,0 +1,22 @@
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-4">hamatan</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="<%= root_path %>" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="<%= lectures_path %>" class="nav-link">授業一覧</a></li>
+        <% if current_user %>
+          <li class="nav-item">
+            <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+          <li class="nav-item"><%= link_to 'ユーザー情報更新', edit_user_registration_path, class: "nav-link" %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to '新規登録', new_user_registration_path, class: "nav-link" %></li>
+        <% end %>
+      </ul>
+    </header>
+</div>

@@ -1,0 +1,61 @@
+
+<main role="main">
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+    <%= form_tag(lectures_path, method: :get) do %>
+        <%= text_field_tag :search, params[:search], placeholder: "授業名で検索" %>
+        <%= submit_tag "検索", class: 'btn btn-primary mb-3'%>
+      <% end %>
+     <%= link_to '新しい授業を作成', new_lecture_path, class: 'btn btn-primary mb-3' %>
+
+      <div class="row">
+        <% @lectures.each do |lecture| %>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title"><%= lecture.title %></h5>
+                <p class="card-text">講師: <%= lecture.teacher %></p>
+                <p class="card-text">前期・後期: <%= lecture.semester %></p>
+                <p class="card-text">学科: <%= lecture.course %></p>
+                <p class="card-text">曜日: <%= lecture.day%></p>
+                <p class="card-text">コマ: <%= lecture.time %></p>
+                <p class="card-text">教室: <%= lecture.where %></p>
+                <p class="card-text">平均評価:<%= lecture.review.average(:star).to_f.round(2) || '評価なし' %></p>
+                <p class="card-text">レビュー数:<%= lecture.review.size %></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="<%= lecture_path(lecture) %>" class="btn btn-sm btn-outline-secondary">詳細</a>
+
+                    <a href="<%= reviews_path(lecture) %>" class="btn btn-lg btn-outline-secondary">レビューを見る</a>
+                  </div>
+                  <% if lecture.edited == true %>
+                    <small class="text-muted">編集済み</small>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script src="../../assets/js/vendor/holder.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>
+  window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
+</script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script><script src="/docs/4.3/assets/js/vendor/anchor.min.js"></script>
+<script src="/docs/4.3/assets/js/vendor/clipboard.min.js"></script>
+<script src="/docs/4.3/assets/js/vendor/bs-custom-file-input.min.js"></script>
+<script src="/docs/4.3/assets/js/src/application.js"></script>
+<script src="/docs/4.3/assets/js/src/search.js"></script>
+<script src="/docs/4.3/assets/js/src/ie-emulation-modes-warning.js"></script>
+  
+
+<svg xmlns="http://www.w3.org/2000/svg" width="348" height="225" viewBox="0 0 348 225" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="17" style="font-weight:bold;font-size:17pt;font-family:Arial, Helvetica, Open Sans, sans-serif">Thumbnail</text></svg>
+</body>
