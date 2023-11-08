@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_06_074855) do
     t.string "teacher", null: false
     t.boolean "edited", default: false, null: false
     t.string "classroom", null: false
+    t.integer "year", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
