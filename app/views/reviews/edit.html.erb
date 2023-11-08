@@ -1,7 +1,7 @@
 
 <h1>レビューの編集</h1>
 
-<%= form_with( url: review_path(@lecture, @review), method: :patch, local: true) do |f| %>
+<%= form_with(model: [@lecture, @review]) do |f| %>
   <div class="form-group">
     <%= f.label :タイトル %>
     <%= f.text_field :title , class: "form-control"%>

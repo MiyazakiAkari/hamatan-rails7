@@ -1,12 +1,12 @@
 class LecturesController < ApplicationController
     before_action :authenticate_user!, except: [:index,:home,:show]
     def index
-        @lectures = if params[:search]
-            Lecture.where('title LIKE ?', "%#{params[:search]}%")
+        if params[:search]
+          @lectures = Lecture.where('title LIKE ?', "%#{params[:search]}%")
         else
-            @lectures = Lecture.all
+          @lectures = Lecture.all
         end
-    end
+      end
 
     def home
     end
@@ -22,7 +22,7 @@ class LecturesController < ApplicationController
     end
     
     def create
-        @lecture = current_user.lecture.create(lecture_params)
+        @lecture = current_user.lectures.create(lecture_params)
         if @lecture.save
             flash[:notice] = "授業が登録されました"
           redirect_to @lecture
@@ -63,7 +63,7 @@ class LecturesController < ApplicationController
     
     private
     def lecture_params
-        params.require(:lecture).permit(:semester, :day, :time, :course, :title, :teacher, :edited, :where, :faculty, :user_id)
+        params.require(:lecture).permit(:semester, :day, :time, :course, :title, :teacher, :edited, :classroom, :faculty, :user_id)
     end
     
 end

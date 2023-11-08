@@ -20,14 +20,14 @@
                 <p class="card-text">学科: <%= lecture.course %></p>
                 <p class="card-text">曜日: <%= lecture.day%></p>
                 <p class="card-text">コマ: <%= lecture.time %></p>
-                <p class="card-text">教室: <%= lecture.where %></p>
-                <p class="card-text">平均評価:<%= lecture.review.average(:star).to_f.round(2) || '評価なし' %></p>
-                <p class="card-text">レビュー数:<%= lecture.review.size %></p>
+                <p class="card-text">教室: <%= lecture.classroom %></p>
+                <p class="card-text">平均評価:<%= lecture.reviews.average(:star)&.round(2) || '評価なし' %></p>
+                <p class="card-text">レビュー数:<%= lecture.reviews.size %></p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <a href="<%= lecture_path(lecture) %>" class="btn btn-sm btn-outline-secondary">詳細</a>
 
-                    <a href="<%= reviews_path(lecture) %>" class="btn btn-lg btn-outline-secondary">レビューを見る</a>
+                    <a href="<%= lecture_reviews_path(lecture) %>" class="btn btn-lg btn-outline-secondary">レビューを見る</a>
                   </div>
                   <% if lecture.edited == true %>
                     <small class="text-muted">編集済み</small>

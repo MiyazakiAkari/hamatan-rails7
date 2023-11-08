@@ -2,61 +2,54 @@
 
   <div class="album py-5 bg-light">
     <div class="container">
-     <%= link_to 'この授業のレビューを書く',  new_review_path, class: 'btn btn-primary mb-3' %>
+     <%= link_to 'この授業のレビューを書く',  new_lecture_review_path, class: 'btn btn-primary mb-3' %>
 
-<div class="row">
-  <% if @review %>
-    <% @review.each do |review| %>
-    <div class="col-md-12">
-        <div class="card mb-4 shadow-sm">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-            <div class="card-body">
-                <h5 class="card-title"><%= @lecture.title %></h5>
-            </div>
-            </div>
-            <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title"><%= review.title %></h5>
-                <p class="card-text">内容: <%= review.body %></p>
-                <p class="card-text">星: <%= review.star %></p>
-                <% if review.user_id = current_user.id %>
-                    <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                        <%= link_to '編集', edit_review_path, class: 'btn btn-secondary' %>
-                        <%= button_to '削除', review_path(@lecture, review), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-secondary' %>
+      <div class="row">
+        <% if @review %>
+          <% @review.each do |review| %>
+          <div class="col-md-12">
+              <div class="card mb-4 shadow-sm">
+              <div class="row no-gutters">
+                  <div class="col-md-4">
+                  <div class="card-body">
+                      <h5 class="card-title"><%= @lecture.title %></h5>
+                  </div>
+                  </div>
+                  <div class="col-md-8">
+                  <div class="card-body">
+                      <h5 class="card-title"><%= review.title %></h5>
+                      <p class="card-text">内容: <%= review.body %></p>
+                      <p class="card-text">星: <%= review.star %></p>
+                      <% if review.user_id = current_user.id %>
+                          <div class="d-flex justify-content-between align-items-center">
+                          <div class="btn-group">
+                              <%= link_to '編集', edit_lecture_review_path(@lecture, review), class: 'btn btn-secondary' %>
+                              <%= button_to '削除', lecture_review_path(@lecture, review), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-secondary' %>
+                          </div>
+                      <% end %>
+                        <%if review.edited == true %>
+                          <small class="text-muted">編集済み</small>
+                        <% end %>
+                      </div>
                     </div>
-                <% end %>
-                  <%if review.edited == true %>
-                    <small class="text-muted">編集済み</small>
-                  <% end %>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  <% else %>
-      <div class="col-md-12">
-        <div class="card border mb-4 shadow-sm">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-12 text-center">
-                <p>現在レビューはありません</p>
+          <% end %>
+        <% else %>
+            <div class="col-md-12">
+              <div class="card border mb-4 shadow-sm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <p>現在レビューはありません</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-  <% end %>
-</div>
-
-
-
-
-
-
+        <% end %>
       </div>
     </div>
   </div>

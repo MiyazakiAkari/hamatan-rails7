@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_06_074855) do
     t.string "faculty", null: false
     t.string "teacher", null: false
     t.boolean "edited", default: false, null: false
-    t.string "where", null: false
+    t.string "classroom", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_06_074855) do
   create_table "reviews", force: :cascade do |t|
     t.string "title"
     t.string "body"
-    t.string "star"
+    t.integer "star"
     t.boolean "edited", default: false, null: false
     t.bigint "lecture_id", null: false
     t.bigint "user_id", null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_06_074855) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

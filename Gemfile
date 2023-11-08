@@ -8,8 +8,8 @@ gem "rails", "~> 7.1.1"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-# Use sqlite3 as the database for Active Record
-gem 'pg'
+# Use pg as the database for Active Record
+gem "pg", "~> 1.1"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
@@ -71,3 +71,6 @@ end
 gem "devise"
 
 gem 'bootstrap'
+
+gem 'jquery-rails'
+gem 'turbolinks'

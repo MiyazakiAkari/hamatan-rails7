@@ -11,12 +11,12 @@
         <p class="card-text">コマ: <%= @lecture.time %></p>
         <p class="card-text">学部: <%= @lecture.faculty %></p>
         <p class="card-text">学科: <%= @lecture.course %></p>
-        <p class="card-text">教室 <%= @lecture.where %></p>
+        <p class="card-text">教室 <%= @lecture.classroom %></p>
       </div>
     </div>
 
     <div class="mt-4">
-      <%= link_to 'レビューを見る', reviews_path(@lecture), class: 'btn btn-primary' %>
+      <%= link_to 'レビューを見る', lecture_reviews_path(@lecture), class: 'btn btn-primary' %>
     </div>
 
     <div class="mt-4">
