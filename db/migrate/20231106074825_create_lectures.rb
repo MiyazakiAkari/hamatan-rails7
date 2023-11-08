@@ -9,7 +9,6 @@ class CreateLectures < ActiveRecord::Migration[6.1]
       t.string :faculty, null: false
       t.string :teacher, null: false
       t.boolean :edited, null: false, default: false
-      t.string :classroom, null: false
       t.references :user, foreign_key: true,  null: false
       
       t.timestamps
