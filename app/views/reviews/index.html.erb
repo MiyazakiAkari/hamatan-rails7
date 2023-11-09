@@ -20,7 +20,7 @@
                       <h5 class="card-title"><%= review.title %></h5>
                       <p class="card-text">内容: <%= review.body %></p>
                       <p class="card-text">星: <%= review.star %></p>
-                      <% if review.user_id = current_user %>
+                      <% if current_user && review.user_id == current_user.id %>
                           <div class="d-flex justify-content-between align-items-center">
                           <div class="btn-group">
                               <%= link_to '編集', edit_lecture_review_path(@lecture, review), class: 'btn btn-secondary' %>
