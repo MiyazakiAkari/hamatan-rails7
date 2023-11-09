@@ -12,14 +12,17 @@ class ReviewsController < ApplicationController
     end
     
     def update
-      @review = Review.find_by(id: params[:id])
+      @lecture = Lecture.find(params[:lecture_id])
+      @review = Review.find_by(id: params[:id])  
+      if @review.user == current_user
         if @review.update(review_params)
           flash[:notice] = "レビューの更新に成功しました"
-          redirect_to lecture_reviews_path
+          redirect_to lecture_reviews_path(@lecture)
         else
-          flash[:notice] = "レビューの更新に失敗しました"
+          flash.now[:notice] = "レビューの更新に失敗しました"
           render 'edit'
         end
+      end
     end
     
     def new
@@ -40,13 +43,14 @@ class ReviewsController < ApplicationController
       end
   end
     def destroy
+      @lecture = Lecture.find(params[:lecture_id])
       @review = current_user.reviews.find_by(id: params[:id])
       if @review.destroy
           flash[:notice] = 'レビューが削除されました'
           redirect_to lectures_path
       else
           flash[:notice] = 'レビューの削除に失敗しました'
-          redirect_to lectures_path
+          redirect_to lecture_reviews_path
       end
     end
     
