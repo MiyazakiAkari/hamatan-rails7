@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
     end
 
     def edit
+      @lecture = Lecture.find(params[:lecture_id])
       @review = current_user.reviews.find_by(id: params[:id])
     end
     
