@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     root 'lectures#home'
     resources :lectures do
         resources :reviews
+        resource :likes, only: [:create, :destroy]
     end
 
   namespace :users do

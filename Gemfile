@@ -74,3 +74,5 @@ gem 'bootstrap'
 
 gem 'jquery-rails'
 gem 'turbolinks'
+
+gem 'font-awesome-rails'

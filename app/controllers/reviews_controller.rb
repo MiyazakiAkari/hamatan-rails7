@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
     def index
       @lecture = Lecture.find(params[:lecture_id])
-      @review = Review.all
+      @review = @lecture.reviews.all
     end
 
     def edit
