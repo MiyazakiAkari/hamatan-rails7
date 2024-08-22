@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_09_220825) do
   create_table "reviews", force: :cascade do |t|
     t.string "title"
     t.string "body"
-    t.integer "star", null: false
+    t.integer "star"
     t.boolean "edited", default: false, null: false
     t.bigint "lecture_id", null: false
     t.bigint "user_id", null: false
