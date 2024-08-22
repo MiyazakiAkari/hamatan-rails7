@@ -27,7 +27,7 @@ class LecturesController < ApplicationController
             flash[:notice] = "授業が登録されました"
           redirect_to @lecture
         else
-          flash[:notice] = "授業の登録に失敗しました"
+          flash[:notice] = "授業の登録に失敗しました"+ @lecture.errors.full_messages.join(", ")
           render 'new'
         end
     end
@@ -50,8 +50,9 @@ class LecturesController < ApplicationController
     end
 
     def destroy
-        @lecture = current_user.lecture.find(params[:id])
-        @lecture.review.destroy_all
+        @lecture = current_user.lectures.find(params[:id])
+        @lecture.reviews.destroy_all
+        @lecture.likes.destroy_all
         if @lecture.destroy
             flash[:notice] = '授業が削除されました'
             redirect_to lectures_path
